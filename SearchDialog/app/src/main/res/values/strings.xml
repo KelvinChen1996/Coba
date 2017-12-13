@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SearchDialog</string>
+    <string-array name="typespinner">
+        <item>Local</item>
+        <item>Outsourcing</item>
+    </string-array>
+</resources>
