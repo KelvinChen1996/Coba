@@ -27,19 +27,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         category = (Spinner) findViewById(R.id.spinner1);
-        btn = (Button) findViewById(R.id.btn_dialog);
         textView = (TextView)  findViewById(R.id.txt_view);
-        btn.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        SearchDialog();
-                    }
-                }
-        );
+
 
         //reference of button added in the main layout
         Button button = (Button) findViewById(R.id.button);
+
 
         ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this, R.array.categoryspinner, android.R.layout.simple_spinner_item);
         adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -65,11 +58,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                 View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.custom_layout, null);
+                category = view.findViewById(R.id.spinner1);
+                ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(view.getContext(), R.array.categoryspinner, android.R.layout.simple_spinner_item);
+                adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                category.setAdapter(adapterCategory);
+
+                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        choosencategory = (String) parent.getItemAtPosition(position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
 
                 TextView title = (TextView) view.findViewById(R.id.title);
 
                 title.setText("Hello There!");
 
+//                SearchDialog();
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -94,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void SearchDialog() {
         final AlertDialog.Builder popDialog = new AlertDialog.Builder(this);
         final SeekBar seek = new SeekBar(this);
-        category = (Spinner) findViewById(R.id.spinner1);
+        category = new Spinner(this);
 
         seek.setMax(1000000);
         seek.setKeyProgressIncrement(1);
@@ -124,21 +134,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
         );
 
-        ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this, R.array.categoryspinner, android.R.layout.simple_spinner_item);
-        adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        category.setAdapter(adapterCategory);
-
-        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                choosencategory = (String) parent.getItemAtPosition(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this, R.array.categoryspinner, android.R.layout.simple_spinner_item);
+//        adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        category.setAdapter(adapterCategory);
+//
+//        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                choosencategory = (String) parent.getItemAtPosition(position);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
         // Button OK
         popDialog.setPositiveButton("OK",
