@@ -18,6 +18,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private Button btn;
     private TextView textView;
+    String choosencategory;
+//    @BindView(R.id.editdetailmyfranchise_category) Spinner category;
+
+    Spinner category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         final AlertDialog.Builder popDialog = new AlertDialog.Builder(this);
         final SeekBar seek = new SeekBar(this);
         final Spinner _spinner = (Spinner) findViewById(R.id.spinner1);
+        category = (Spinner) findViewById(R.id.spinner1);
+
         seek.setMax(1000000);
         seek.setKeyProgressIncrement(1);
 
@@ -145,9 +151,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
         );
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.MetricUnitsArray, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        _spinner.setAdapter(adapter);
+        ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this, R.array.categoryspinner, android.R.layout.simple_spinner_item);
+        adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category.setAdapter(adapterCategory);
+
+        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                choosencategory = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.MetricUnitsArray, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        _spinner.setAdapter(adapter);
 
 
         // Button OK
