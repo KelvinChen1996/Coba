@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        category = (Spinner) findViewById(R.id.spinner1);
         btn = (Button) findViewById(R.id.btn_dialog);
         textView = (TextView)  findViewById(R.id.txt_view);
         btn.setOnClickListener(
@@ -40,48 +41,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //reference of button added in the main layout
         Button button = (Button) findViewById(R.id.button);
 
-//        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-////        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array)
-//        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(
-//                this, R.array.MetricUnitsArray, android.R.layout.simple_spinner_item);
-//
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(adapter);
+        ArrayAdapter<CharSequence> adapterCategory = ArrayAdapter.createFromResource(this, R.array.categoryspinner, android.R.layout.simple_spinner_item);
+        adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category.setAdapter(adapterCategory);
 
+        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                choosencategory = (String) parent.getItemAtPosition(position);
+            }
 
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.MetricUnitsArray, android.R.layout.simple_spinner_item);
-//// Specify the layout to use when the list of choices appears
-//
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//// Apply the adapter to the spinner
-//        spinner.setAdapter(adapter);
-//
-//        spinner.setOnItemSelectedListener((OnItemSelectedListener) this);
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-
-
-
-//
-//        String[] items = new String[] { "A", "B", "C" };
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item, items); // Use String[] , Dynamic
-//
-//        dynamicSpinner.setAdapter(adapter);
-//
-//        dynamicSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view,
-//                                       int position, long id) {
-//                Toast.makeText(getApplicationContext(), (String) parent.getItemAtPosition(position), Toast.LENGTH_LONG).show();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // TODO Auto-generated method stub
-//            }
-//        });
+            }
+        });
 
 
         //setting click event listener to button
@@ -120,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void SearchDialog() {
         final AlertDialog.Builder popDialog = new AlertDialog.Builder(this);
         final SeekBar seek = new SeekBar(this);
-        final Spinner _spinner = (Spinner) findViewById(R.id.spinner1);
         category = (Spinner) findViewById(R.id.spinner1);
 
         seek.setMax(1000000);
@@ -166,11 +139,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             }
         });
-
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.MetricUnitsArray, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        _spinner.setAdapter(adapter);
-
 
         // Button OK
         popDialog.setPositiveButton("OK",
