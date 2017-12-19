@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:padding="10dp"
+        android:background="#BDE5F8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:src="@drawable/info"
+            android:layout_marginRight="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="#00529B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap the map to move marker and tap checklist button"/>
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/getfrommaps_maps"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
+        <android.support.design.widget.FloatingActionButton
+            android:layout_margin="10dp"
+            android:id="@+id/getfrommaps_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/check1" />
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</LinearLayout>
