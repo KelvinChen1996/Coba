@@ -6,8 +6,8 @@ package com.example.asus.pikachise.presenter.api;
 
 public class apiUtils {
 
-//    public static final String IP ="http://192.168.1.100/";
-    public static final String IP ="http://172.22.192.94/";
+    public static final String IP ="http://192.168.1.100/";
+//    public static final String IP ="http://172.22.192.94/";
 
 
     public static final String BASE = IP+"franchise_marketplace_api/public/";

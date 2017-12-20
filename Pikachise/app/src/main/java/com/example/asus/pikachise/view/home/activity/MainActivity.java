@@ -607,7 +607,10 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Intent intent = new Intent(MainActivity.this, Search.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slideright, R.anim.fadeout);
                 return true;
             }
         });
@@ -642,8 +645,8 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
                                 }
                             }catch (JSONException e){
                                 e.printStackTrace();
-                            }catch (IOException e){
                                 e.printStackTrace();
+                            }catch (IOException e){
                             }
                         }
                     }

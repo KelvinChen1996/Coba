@@ -5,12 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
@@ -38,9 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -150,29 +146,16 @@ public class FranchiseDetail extends AppCompatActivity {
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Intent> emailAppLauncherIntents = new ArrayList<>();
 
-                //Intent that only email apps can handle:
-                Intent emailAppIntent = new Intent(Intent.ACTION_SENDTO);
-                emailAppIntent.setData(Uri.parse("mailto:"));
-                emailAppIntent.putExtra(Intent.EXTRA_EMAIL, "");
-                emailAppIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+                String uriText =
+                        "mailto:" +extraemail+
+                                "?subject=" + Uri.encode("Franchise") +
+                                "&body=" + Uri.encode("");
+                Uri uri = Uri.parse(uriText);
 
-                PackageManager packageManager = getPackageManager();
-
-                //All installed apps that can handle email intent:
-                List<ResolveInfo> emailApps = packageManager.queryIntentActivities(emailAppIntent, PackageManager.MATCH_ALL);
-
-                for (ResolveInfo resolveInfo : emailApps) {
-                    String packageName = resolveInfo.activityInfo.packageName;
-                    Intent launchIntent = packageManager.getLaunchIntentForPackage(packageName);
-                    emailAppLauncherIntents.add(launchIntent);
-                }
-
-                //Create chooser
-                Intent chooserIntent = Intent.createChooser(new Intent(), "Select email app:");
-                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, emailAppLauncherIntents.toArray(new Parcelable[emailAppLauncherIntents.size()]));
-                startActivity(chooserIntent);
+                Intent sendIntent = new Intent(Intent.ACTION_SENDTO);
+                sendIntent.setData(uri);
+                startActivity(Intent.createChooser(sendIntent, "Send email"));
 
             }
         });
