@@ -1,7 +1,9 @@
 package com.example.asus.pikachise.view.home.homenew.adapter;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -112,7 +114,8 @@ public class NewRVAdapter extends RecyclerView.Adapter<NewRVAdapter.EventHolder>
                 intent.putExtra(EMAIL, current.getEmail());
                 intent.putExtra(AVERAGE_RATING, current.getAverageRating());
                 intent.putExtra(DETAIL, current.getDetail());
-                context.startActivity(intent);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(context,R.anim.slideright, R.anim.fadeout).toBundle();
+                context.startActivity(intent, bundle);
             }
         });
 

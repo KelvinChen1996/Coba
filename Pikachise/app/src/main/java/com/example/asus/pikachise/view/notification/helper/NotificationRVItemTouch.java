@@ -1,11 +1,7 @@
 package com.example.asus.pikachise.view.notification.helper;
 
-import android.graphics.Canvas;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.View;
-
-import com.example.asus.pikachise.R;
 //import com.example.asus.pikachise.view.notification.adapter.NotificationRVAdapter;
 
 /**

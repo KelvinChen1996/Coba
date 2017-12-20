@@ -71,21 +71,6 @@
         <item>Technology</item>
         <item>Travel</item>
     </string-array>
-    <string-array name="FilterFranchise">
-        <item>all</item>
-        <item>Automotive</item>
-        <item>Beauty</item>
-        <item>Cleaning</item>
-        <item>Education</item>
-        <item>Food</item>
-        <item>Hotel</item>
-        <item>Maintenance</item>
-        <item>Medic</item>
-        <item>Pet Services</item>
-        <item>Retail</item>
-        <item>Technology</item>
-        <item>Travel</item>
-    </string-array>
     <string-array name="typespinner">
         <item>Local</item>
         <item>Outsourcing</item>
@@ -352,5 +337,20 @@
         <item>Yemen</item>
         <item>Zambia</item>
         <item>Zimbabwe</item>
+    </string-array>
+    <string-array name="FilterFranchise">
+        <item>all</item>
+        <item>Automotive</item>
+        <item>Beauty</item>
+        <item>Cleaning</item>
+        <item>Education</item>
+        <item>Food</item>
+        <item>Hotel</item>
+        <item>Maintenance</item>
+        <item>Medic</item>
+        <item>Pet Services</item>
+        <item>Retail</item>
+        <item>Technology</item>
+        <item>Travel</item>
     </string-array>
 </resources>

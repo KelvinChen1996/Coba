@@ -91,7 +91,7 @@ public class NotificationRVAdapter extends RecyclerView.Adapter<NotificationRVAd
 
 
         String date =notification.getNotificationCreatedAt();
-        long waktusekarang = System.currentTimeMillis() + 6000;
+        long waktusekarang = System.currentTimeMillis() + 7000;
 
         SimpleDateFormat sdf = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -209,4 +209,6 @@ public class NotificationRVAdapter extends RecyclerView.Adapter<NotificationRVAd
         notificationList.add(position, notification);
         notifyItemInserted(position);
     }
+
+
 }

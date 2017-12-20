@@ -1,6 +1,7 @@
 package com.example.asus.pikachise.view.notification.fragment;
 
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asus.pikachise.R;
@@ -41,6 +43,8 @@ import retrofit2.Response;
  */
 public class NotificationFragment extends Fragment implements  SwipeRefreshLayout.OnRefreshListener{
     @BindView(R.id.notification_recyclervidw) RecyclerView recyclerView;
+//    @BindView(R.id.usermain_navigationview)
+//    NavigationView navigationView;
     @BindView(R.id.notification_swiperefreshlayout) SwipeRefreshLayout swipeRefreshLayout;
     private List<Notification> notificationList = new ArrayList<>();
     private NotificationRVAdapter notificationRVAdapter;
@@ -49,6 +53,8 @@ public class NotificationFragment extends Fragment implements  SwipeRefreshLayou
     String token;
     apiService service;
     SessionManagement session;
+    public int notificationID =1;
+    TextView notification;
 
     public NotificationFragment() {
         // Required empty public constructor
@@ -82,6 +88,8 @@ public class NotificationFragment extends Fragment implements  SwipeRefreshLayou
                 GET_notificationAPI();
             }
         });
+        removeNotification();
+
 
         return view;
     }
@@ -125,4 +133,18 @@ public class NotificationFragment extends Fragment implements  SwipeRefreshLayou
         GET_notificationAPI();
 
     }
+
+    public void removeNotification() {
+        NotificationManager manager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.cancel(notificationID);
+
+    }
+
+//    public void disableNotif() {
+////        notification = (TextView) getActionView(navigationView.getMenu().findItem(R.id.usernavitem_notification));
+////        notification = (TextView) navigationView.getMenu().findItem(R.id.usernavitem_notification).getActionView();
+//        notification.setVisibility(View.INVISIBLE);
+//        removeNotification();
+//
+//    }
 }

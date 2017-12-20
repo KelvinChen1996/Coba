@@ -170,8 +170,7 @@ public class MyFranchiseActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
-                finish();
+                initGoHome();
             }
         });
     }
@@ -179,7 +178,6 @@ public class MyFranchiseActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(MyFranchiseActivity.this, MainActivity.class);
-
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
@@ -198,14 +196,17 @@ public class MyFranchiseActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.toolbarupdate_home) {
-            Intent intent1 = new Intent(context, MainActivity.class);
-            intent1.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent1);
-            overridePendingTransition(R.anim.slideleft, R.anim.fadeout);
-            finish();
+            initGoHome();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    private void initGoHome(){
+        Intent intent1 = new Intent(context, MainActivity.class);
+        intent1.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent1);
+        overridePendingTransition(R.anim.slideleft, R.anim.fadeout);
+        finish();
     }
 }

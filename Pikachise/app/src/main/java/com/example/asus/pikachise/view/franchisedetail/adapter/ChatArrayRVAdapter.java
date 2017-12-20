@@ -115,8 +115,7 @@ public class ChatArrayRVAdapter extends RecyclerView.Adapter<ChatArrayRVAdapter.
         String[] pecah = date.split(" ");
         String waktu = pecah[1];
         String tanggal = pecah[0];
-        long waktusekarang = System.currentTimeMillis();
-//        SimpleDateFormat sdf = null;
+        long waktusekarang = System.currentTimeMillis()+7000;
         SimpleDateFormat sdf = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

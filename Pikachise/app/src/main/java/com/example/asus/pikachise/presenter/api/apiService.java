@@ -381,12 +381,6 @@ public interface apiService {
             @Part MultipartBody.Part image
     );
 
-    @FormUrlEncoded
-    @POST("franchise/franchise_list_by_alphabet")
-    Call<ListFranchiseResponse> List_by_alphabet(
-            @Field("token") String token,
-            @Field("order") String order);
-
 
     @FormUrlEncoded
     @POST("franchise/filter_franchise")

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -69,7 +67,6 @@ public class Search extends AppCompatActivity implements SearchView.OnQueryTextL
     private Context context;
     private String token;
 
-
     String choosencategory, choose_filter_by, choose_price_min,choose_price_max, choose_order;
     Spinner category;
     Boolean checked;
@@ -85,9 +82,8 @@ public class Search extends AppCompatActivity implements SearchView.OnQueryTextL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        choose_price_min = String.valueOf(0);
+        choose_price_min = "0";
         choose_price_max= "10000000000";
-
         ButterKnife.bind(this);
         context = this;
         session = new SessionManagement(getApplicationContext());
@@ -108,9 +104,7 @@ public class Search extends AppCompatActivity implements SearchView.OnQueryTextL
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Search.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                initGoHome();
             }
         });
 
@@ -144,28 +138,15 @@ public class Search extends AppCompatActivity implements SearchView.OnQueryTextL
         Log.i("debug", "error di object" + listFranchise.size());
         allFranchiseAPI();
     }
-    private void setupToolbar(){
-        setSupportActionBar(toolbar);
-        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
-        upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
-        getSupportActionBar().setHomeAsUpIndicator(upArrow);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Search.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        overridePendingTransition(R.anim.slideleft, R.anim.fadeout);
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -413,6 +394,14 @@ public class Search extends AppCompatActivity implements SearchView.OnQueryTextL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+    private void initGoHome(){
+        Intent intent1 = new Intent(context, MainActivity.class);
+        intent1.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent1);
+        overridePendingTransition(R.anim.slideleft, R.anim.fadeout);
+        finish();
     }
 }
 

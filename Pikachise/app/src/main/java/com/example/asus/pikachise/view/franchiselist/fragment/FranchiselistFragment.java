@@ -1,6 +1,7 @@
 package com.example.asus.pikachise.view.franchiselist.fragment;
 
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -58,7 +59,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "ALL");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         automotive.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +68,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "AUTOMOTIVE");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         beauty.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +77,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "BEAUTY");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         cleaning.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +86,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "CLEANING");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         education.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +95,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "EDUCATION");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         food.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +104,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "FOOD");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         hotel.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +113,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "HOTEL");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         maintenance.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +122,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "MAINTENANCE");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         medic.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +131,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "MEDIC");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         pet.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +140,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "PET");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         retail.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +149,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "RETAIL");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         tech.setOnClickListener(new View.OnClickListener() {
@@ -146,7 +158,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "TECH");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
         travel.setOnClickListener(new View.OnClickListener() {
@@ -154,7 +167,8 @@ public class FranchiselistFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AllCategory.class);
                 i.putExtra(INTENT_CATEGORY, "TRAVEL");
-                getActivity().startActivity(i);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(),R.anim.slideright, R.anim.fadeout).toBundle();
+                getActivity().startActivity(i, bundle);
             }
         });
     }

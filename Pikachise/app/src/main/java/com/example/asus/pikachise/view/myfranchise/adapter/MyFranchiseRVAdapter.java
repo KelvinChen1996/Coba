@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.asus.pikachise.R;
 import com.example.asus.pikachise.model.MyFranchise;
+import com.example.asus.pikachise.view.franchisedetail.activity.FranchiseDetail;
 import com.example.asus.pikachise.view.myfranchise.activity.DetailMyFranchise;
 import com.example.asus.pikachise.view.myfranchise.activity.PendingDetailMyFranchise;
 import com.squareup.picasso.Picasso;
@@ -46,6 +47,7 @@ public class MyFranchiseRVAdapter extends RecyclerView.Adapter<MyFranchiseRVAdap
     private final static String LOCATION = "LOCATION";
     private final static String PHONENUMBER = "PHONENUMBER";
     private final static String DETAIL = "DETAIL";
+    private final static String AVERAGE_RATING = "AVERAGE_RATING";
 
     private List<MyFranchise> myFranchiseList;
     private Context context;
@@ -105,13 +107,39 @@ public class MyFranchiseRVAdapter extends RecyclerView.Adapter<MyFranchiseRVAdap
                         intent.putExtra(PHONENUMBER, current.getPhoneNumber());
                         intent.putExtra(EMAIL, current.getEmail());
                         intent.putExtra(DETAIL, current.getDetail());
+                        intent.putExtra(AVERAGE_RATING, current.getAverageRating());
                         Bundle bundle = ActivityOptions.makeCustomAnimation(context,R.anim.slideright, R.anim.fadeout).toBundle();
                         context.startActivity(intent, bundle);
                     }
                 });
+            }else {
+                holder.container.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, FranchiseDetail.class);
+                        intent.putExtra(USER_ID, current.getUserId());
+                        intent.putExtra(FRANCHISE_ID, current.getFranchiseId());
+                        intent.putExtra(NAME, current.getName());
+                        intent.putExtra(BANNER, current.getBanner());
+                        intent.putExtra(LOGO, current.getLogo());
+                        intent.putExtra(CATEGORY, current.getCategory());
+                        intent.putExtra(TYPE, current.getType());
+                        intent.putExtra(ESTABLISHSINCE, current.getEstablishSince());
+                        intent.putExtra(INVESTMENT, current.getInvestment());
+                        intent.putExtra(FRANCHISEFEE, current.getFranchiseFee());
+                        intent.putExtra(WEBSITE, current.getWebsite());
+                        intent.putExtra(ADDRESS, current.getAddress());
+                        intent.putExtra(LOCATION, current.getLocation());
+                        intent.putExtra(PHONENUMBER, current.getPhoneNumber());
+                        intent.putExtra(EMAIL, current.getEmail());
+                        intent.putExtra(DETAIL, current.getDetail());
+                        intent.putExtra(AVERAGE_RATING, current.getAverageRating());
+                        Bundle bundle = ActivityOptions.makeCustomAnimation(context,R.anim.slideright, R.anim.fadeout).toBundle();
+                        context.startActivity(intent, bundle);
+                    }
+                });
+
             }
-
-
         }
         else if(statusverified.equals("active")){
             holder.status.setImageResource(R.drawable.verified);
@@ -141,6 +169,33 @@ public class MyFranchiseRVAdapter extends RecyclerView.Adapter<MyFranchiseRVAdap
                         context.startActivity(intent, bundle);
                     }
                 });
+            }else {
+                holder.container.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, FranchiseDetail.class);
+                        intent.putExtra(USER_ID, current.getUserId());
+                        intent.putExtra(FRANCHISE_ID, current.getFranchiseId());
+                        intent.putExtra(NAME, current.getName());
+                        intent.putExtra(BANNER, current.getBanner());
+                        intent.putExtra(LOGO, current.getLogo());
+                        intent.putExtra(CATEGORY, current.getCategory());
+                        intent.putExtra(TYPE, current.getType());
+                        intent.putExtra(ESTABLISHSINCE, current.getEstablishSince());
+                        intent.putExtra(INVESTMENT, current.getInvestment());
+                        intent.putExtra(FRANCHISEFEE, current.getFranchiseFee());
+                        intent.putExtra(WEBSITE, current.getWebsite());
+                        intent.putExtra(ADDRESS, current.getAddress());
+                        intent.putExtra(LOCATION, current.getLocation());
+                        intent.putExtra(PHONENUMBER, current.getPhoneNumber());
+                        intent.putExtra(EMAIL, current.getEmail());
+                        intent.putExtra(DETAIL, current.getDetail());
+                        intent.putExtra(AVERAGE_RATING, current.getAverageRating());
+                        Bundle bundle = ActivityOptions.makeCustomAnimation(context,R.anim.slideright, R.anim.fadeout).toBundle();
+                        context.startActivity(intent, bundle);
+                    }
+                });
+
             }
 
         }

@@ -1,7 +1,9 @@
 package com.example.asus.pikachise.view.interestedlist.adapter;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +39,7 @@ public class Interested_Adapter extends RecyclerView.Adapter<Interested_Adapter.
     private final static String LOCATION = "LOCATION";
     private final static String PHONENUMBER = "PHONENUMBER";
     private final static String DETAIL = "DETAIL";
+    private final static String AVERAGE_RATING = "AVERAGE_RATING";
     private List<MyFranchise> myFranchiseList;
     private Context context;
     private String status;
@@ -81,7 +84,9 @@ public class Interested_Adapter extends RecyclerView.Adapter<Interested_Adapter.
                         intent.putExtra(LOCATION,current.getLocation());
                         intent.putExtra(PHONENUMBER,current.getPhoneNumber());
                         intent.putExtra(DETAIL,current.getDetail());
-                        context.startActivity(intent);
+                        intent.putExtra(AVERAGE_RATING, current.getAverageRating());
+                        Bundle bundle = ActivityOptions.makeCustomAnimation(context,R.anim.slideright, R.anim.fadeout).toBundle();
+                        context.startActivity(intent, bundle);
                     }
                 }
         );

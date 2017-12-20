@@ -247,6 +247,8 @@ public class FranchiseDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+                overridePendingTransition(R.anim.slideleft, R.anim.fadeout);
+                finish();
             }
         });
     }

@@ -103,10 +103,10 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
     Context context;
     User user;
     SessionManagement session;
-    Boolean show;
-    private String token, email, image, name ,id;
     Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-    private int notificationID =1;
+    public int notificationID =1;
+
+    private String token, email, image, name ,id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,10 +123,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         initNav();
         initCollapToolbar();
         initImageToolbar();
-
         GetNotificationCountWithAlert();
-
-
 
     }
     private void retrievedataAPI(){
@@ -153,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
             // Here we can decide what do to -- perhaps load other parameters from the intent extras such as IDs, etc
             if (menuFragment.equals("favoritesMenuItem")) {
+                disableNotif();
                 fragmentTransaction.replace(R.id.usermain_containerview, new NotificationFragment()).commit();
 
             }
@@ -185,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
                                 if(integer>0){
                                     AlertSoundNotification(integer.toString());
 //                                    AddNotification(integer.toString());
+
                                     notification = (TextView) MenuItemCompat.
                                             getActionView(navigationView.getMenu().
                                                     findItem(R.id.usernavitem_notification));
@@ -261,12 +260,13 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
                 });
     }
 
-    private void disableNotif() {
+    public void disableNotif() {
         notification = (TextView) MenuItemCompat.
                 getActionView(navigationView.getMenu().
                         findItem(R.id.usernavitem_notification));
         notification.setVisibility(View.INVISIBLE);
         removeNotification();
+
     }
 
     //Add Notification
@@ -297,7 +297,6 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         manager.cancel(notificationID);
     }
 
-
     private void AlertSoundNotification(String count) {
         final NotificationCompat.Builder builder  = new NotificationCompat.Builder(this);
         builder.setSmallIcon(R.drawable.ic_notifications);
@@ -307,6 +306,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         builder.setSound(defaultSoundUri);
         builder.setContentText(text);
         Intent notificationIntent = new Intent(this, MainActivity.class);
+//        notificationIntent.putExtra()
         notificationIntent.putExtra("menuFragment", "favoritesMenuItem");
         GET_Notif_ALERT();
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,notificationIntent,
@@ -316,6 +316,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         Notification notification = builder.build();
         NotificationManagerCompat.from(this).notify(notificationID,notification);
     }
+
 
     private void initObject(){
         ButterKnife.bind(this);

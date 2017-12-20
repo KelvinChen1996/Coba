@@ -1,7 +1,9 @@
 package com.example.asus.pikachise.view.search.adapter;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,7 +89,8 @@ public class SearchRVAdapter extends RecyclerView.Adapter<SearchRVAdapter.EventH
                 intent.putExtra(EMAIL, current.getEmail());
                 intent.putExtra(AVERAGE_RATING, current.getAverageRating());
                 intent.putExtra(DETAIL, current.getDetail());
-                context.startActivity(intent);
+                Bundle bundle = ActivityOptions.makeCustomAnimation(context,R.anim.slideright, R.anim.fadeout).toBundle();
+                context.startActivity(intent, bundle);
             }
         });
     }
